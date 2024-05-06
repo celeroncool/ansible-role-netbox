@@ -5,8 +5,8 @@
     - lae.travis-lxc
   vars:
     test_profiles:
-      - profile: debian-buster
-      - profile: ubuntu-bionic
-      - profile: centos-7
+      - profile: debian-bookworm
+      - profile: ubuntu-jammy
+      - profile: centos-9
     test_host_suffixes:
       - git
