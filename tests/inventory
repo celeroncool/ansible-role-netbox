@@ -2,6 +2,6 @@
 netbox_git
 
 [netbox_git]
-debian-buster-git
-ubuntu-bionic-git
-centos-7-git
+debian-bookworm-git
+ubuntu-jammy-git
+centos-9-git
