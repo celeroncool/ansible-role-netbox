@@ -115,6 +115,21 @@
   when:
     - netbox_ldap_enabled
 
+- name: Generate AzureAD configuration for netbox if enabled
+  template:
+    src: "{{ netbox_azuread_config_template }}"
+    dest: "{{ netbox_shared_path }}/azuread_config.py"
+    owner: "{{ netbox_user }}"
+    group: "{{ netbox_group }}"
+    mode: 0640
+    validate: "{{ netbox_virtualenv_path }}/bin/python -c \"import py_compile,os; f=r'%s';\
+                c='/tmp/' + os.path.basename(os.path.dirname(f)) + '-' + os.path.basename(f) + 'c';\
+                py_compile.compile(f, c); os.remove(c)\""
+  notify:
+    - reload netbox.service
+  when:
+    - netbox_azuread_enabled
+
 - name: Symlink NetBox configuration file into the active NetBox release
   file:
     src: "{{ netbox_shared_path }}/configuration.py"
@@ -130,6 +145,16 @@
     owner: "{{ netbox_user }}"
     group: "{{ netbox_group }}"
     state: "{{ 'link' if netbox_ldap_enabled else 'absent' }}"
+  notify:
+    - reload netbox.service
+
+- name: Symlink/Remove NetBox AzureAD configuration file into/from the active NetBox release
+  file:
+    src: "{{ netbox_shared_path + '/azuread_config.py' if netbox_azuread_enabled else omit }}"
+    dest: "{{ netbox_config_path }}/azuread_config.py"
+    owner: "{{ netbox_user }}"
+    group: "{{ netbox_group }}"
+    state: "{{ 'link' if netbox_azuread_enabled else 'absent' }}"
   notify:
     - reload netbox.service
 

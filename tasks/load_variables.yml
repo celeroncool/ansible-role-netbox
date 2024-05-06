@@ -27,6 +27,12 @@
     netbox_ldap_packages: "{{ _netbox_ldap_packages | list }}"
   when: netbox_ldap_packages is not defined
 
+- name: Define netbox_azuread_packages
+  set_fact:
+    netbox_azuread_packages: "{{ _netbox_azuread_packages | list }}"
+  when: netbox_azuread_packages is not defined
+
+
 - name: Define _netbox_config
   set_fact:
     _netbox_config: "{{ netbox_config }}"
@@ -36,6 +42,7 @@
     _netbox_python_deps:
       - "{{ netbox_napalm_packages if netbox_napalm_enabled else [] }}"
       - "{{ 'django-auth-ldap' if netbox_ldap_enabled else [] }}"
+      - "{{ 'django-auth-adfs' if netbox_azuread_enabled else [] }}"
       - "{{ 'django-storages' if _netbox_storages_module is defined else [] }}"
       - "{{ _netbox_storages_map[_netbox_storages_module] if _netbox_storages_module is defined else [] }}"
       - "{{ netbox_pip_packages }}"

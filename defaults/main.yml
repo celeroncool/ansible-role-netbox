@@ -1,7 +1,7 @@
 ---
 # defaults file for lae.netbox
 netbox_stable: false
-netbox_stable_version: 3.0.12
+netbox_stable_version: 3.7.5
 netbox_stable_uri: "https://github.com/netbox-community/netbox/archive/v{{ netbox_stable_version }}.tar.gz"
 
 netbox_git: false
@@ -82,6 +82,9 @@ netbox_requests_log: "file:{{ netbox_shared_path }}/requests.log"
 
 netbox_ldap_enabled: false
 netbox_ldap_config_template: netbox_ldap_config.py.j2
+
+netbox_azuread_enabled: false
+netbox_azuread_config_template: netbox_azuread_config.py.j2
 
 netbox_napalm_enabled: false
 netbox_napalm_packages:

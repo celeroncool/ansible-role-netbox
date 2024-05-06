@@ -1,0 +1,18 @@
+{{ ansible_managed | comment }}
+import time
+from social.backends.oauth import BaseOAuth2, AzureADOAuth2
+"""
+Read the NetBox Azure AD configuration documentation if you need assistance:
+https://docs.netbox.dev/en/stable/administration/authentication/microsoft-azure-ad/
+This is just an example. Modify it to your liking and place it in your
+playbook's templates/ directory (or anywhere, but make sure
+"netbox_azure_config_template" is configured to whatever location you place the
+template in should it not be in templates/.
+"""
+
+# Use variables like the below if you prefer:
+REMOTE_AUTH_BACKEND = 'social_core.backends.azuread.AzureADOAuth2'
+SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = ''
+SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = ''
+
+# vim: ft=python

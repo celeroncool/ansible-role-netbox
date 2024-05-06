@@ -17,3 +17,6 @@ _netbox_python_binary: /usr/bin/python3.6
 _netbox_ldap_packages:
   - libldap2-dev
   - libsasl2-dev
+_netbox_azuread_packages:
+  - python3-defusedxml
+  - python3-openid
