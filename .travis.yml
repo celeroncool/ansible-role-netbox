@@ -1,5 +1,6 @@
 language: python
-sudo: required
+python: "3.10"
+sudo: true
 dist: jammy
 cache:
   directories: [ '$HOME/lxc' ]
@@ -13,7 +14,7 @@ matrix:
 # FIXME: Ansible 2.10.x going through major restructuring.
 # https://groups.google.com/forum/#!msg/ansible-project/eXsoOKEd0Mk/XTgbnPWbCAAJ
   include:
-    - python: '3.10'
+#    - python: '3.9'
 #      env: ANSIBLE_GIT_VERSION='devel' # 2.10.x development branch
 #    - env: ANSIBLE_VERSION='~=2.10.0'
 #    - env: ANSIBLE_VERSION='~=2.9.0'
