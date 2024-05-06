@@ -18,7 +18,7 @@ jobs:
 #      env: ANSIBLE_GIT_VERSION='devel' # 2.10.x development branch
 #    - env: ANSIBLE_VERSION='~=2.10.0'
 #    - env: ANSIBLE_VERSION='~=2.9.0'
-    - env: ANSIBLE_VERSION='~=9.5.2'
+    - env: ANSIBLE_VERSION='~=9.5.1'
 install:
 - if [ "$ANSIBLE_GIT_VERSION" ]; then pip install "https://github.com/ansible/ansible/archive/${ANSIBLE_GIT_VERSION}.tar.gz";
   else pip install "ansible${ANSIBLE_VERSION}"; fi;
